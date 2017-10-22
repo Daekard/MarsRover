@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class MarsRover {
+class MarsRover {
     public static void main(String [] args)
     {
         System.out.print("Enter the path for the command file (e.g. c:\\path\\file.txt): ");
@@ -17,6 +17,12 @@ public class MarsRover {
         {
             long plateauX = in.nextLong();
             long plateauY = in.nextLong();
+
+            if (plateauX <=0 || plateauY <=0) {
+                throw new IllegalArgumentException(
+                        "The plateau size must consist of positive whole numbers greater than zero");
+            }
+
             in.nextLine();
             RoverController controller = new RoverController(plateauX, plateauY);
             while (in.hasNextLine())
@@ -37,6 +43,8 @@ public class MarsRover {
             System.out.println("Failed to find specified file: " + filePath);
         } catch (InputMismatchException x) {
             System.out.println("An error occurred while reading the file. Ensure file meets format specifications.");
+        } catch (IllegalArgumentException x) {
+            System.out.println(x.getMessage());
         }
     }
 }

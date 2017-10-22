@@ -5,7 +5,7 @@ package mars;
  */
 public class Rover {
 
-    private static char MOVE = 'M';
+    private static final char MOVE = 'M';
 
     private Heading heading = Heading.N;
     private long x = 0;
@@ -130,11 +130,11 @@ public class Rover {
             this.rotor = rotor;
         }
 
-        public int getDirection() {
+        int getDirection() {
             return direction;
         }
 
-        public char getRotor() {
+        char getRotor() {
             return rotor;
         }
     }
